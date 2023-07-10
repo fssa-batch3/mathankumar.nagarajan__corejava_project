@@ -45,11 +45,11 @@ public class Cat {
         System.out.println("Cat 1:");
         System.out.println("Age: " + cat1.Age());
         System.out.println("Color: " + cat1.getColor());
-				System.out.println("Speaks: " + cat1.speak());
+		System.out.println("Speaks: " + cat1.speak());
 
         System.out.println("Cat 2:");
         System.out.println("Age: " + cat2.Age());
         System.out.println("Color: " + cat2.getColor());
-				System.out.println("Speaks: " + cat1.speak());
+		System.out.println("Speaks: " + cat1.speak());
     }
 }
