@@ -5,14 +5,13 @@ import java.util.List;
 
 public class RemoveDuplicate {
 	
-	public static void main(String[] args) {
+	public static boolean myArray(List<String> cityList) throws IllegalArgumentException {
 		
-		List<String> cityList = new ArrayList<String>();
-		cityList.add("Chennai");
-		cityList.add("Bangalore");
-		cityList.add("Mumbai");
-		cityList.add("Chennai");
-		cityList.add("Mumbai");
+		
+		if(cityList == null) {
+			throw new IllegalArgumentException("ArrayList Cann't Be Null");
+		}
+		
 		
 		// Add logic to remove the duplicate Array and 
 		// store the unique city name is an another ArrayList
@@ -35,8 +34,25 @@ public class RemoveDuplicate {
 				outputList.add(cityList.get(i));
 			}
 		}
+//		System.out.print(outputList);
+		return true;
 		
-		System.out.println(outputList);
+		
+	}
+	
+	public static void main(String[] args) {
+		
+		List<String> cityList = new ArrayList<String>();
+		cityList.add("Chennai");
+		cityList.add("Bangalore");
+		cityList.add("Mumbai");
+		cityList.add("Chennai");
+		cityList.add("Mumbai");
+		
+		myArray(cityList);
+		
+		
+		
 		
 	}
 

@@ -6,7 +6,7 @@ public class TestArrayListWithGenerics {
  
     public static void main(String[] args) {
          
-        // Store the city names in the List ( use Generics )
+        // Store the city names in the List ( use Generic )
         ArrayList<String> cityList  = new ArrayList<String>();
         cityList.add("Chennai");
         cityList.add("Bangalore");
