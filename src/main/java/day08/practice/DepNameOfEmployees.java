@@ -1,29 +1,41 @@
 package day08.practice;
 
 import java.util.ArrayList;
-import java.util.HashMap;
+import java.util.Collection;
+import java.util.Collections;
 import java.util.List;
 import java.util.Map;
+import java.util.Scanner;
+import java.util.TreeMap;
+import java.util.TreeSet;
 
 public class DepNameOfEmployees {
 	
 	public static boolean depnameofemployees(ArrayList<String> depOfEmp) throws IllegalArgumentException {
+		
+		Scanner sc = new Scanner(System.in);
 		
 		if(depOfEmp == null) {
 			throw new IllegalArgumentException("Given ArrayList Cann't be Null");
 		}
 		
 		
-		Map<String, List<String>> depMap = new HashMap<>();
+		Map<String, List<String>> depMap = new TreeMap<>();
 		
 		System.out.println("Enter Input Like: HR, Name");
 		
 		
 		for(int i=0; i<depOfEmp.size(); i++) {
-			
-			
 			String str = depOfEmp.get(i);
-		
+			
+			
+//		while(sc.hasNext()) {
+			
+//			String str = sc.nextLine();
+			
+//			if("stop".equals(str)) {
+//				break;
+//			}
 			
 			
 			if(str == null|| "".equals(str.trim())) {
@@ -50,23 +62,43 @@ public class DepNameOfEmployees {
 			
 		}
 		
-
+//Collections.sort();
 		
 		for(Map.Entry<String, List<String>> e : depMap.entrySet()) {
 			
 			String depName = e.getKey();
-			List<String> empNames = e.getValue();
+			Collections.sort(e.getValue());
 			
-			System.out.println(depName + ": " + empNames);
+			StringBuilder sb = new StringBuilder();
+			
+			for(int i=0; i<e.getValue().size(); i++) {
+				
+				if(i==0) {
+					sb.append(e.getValue().get(i));
+				}
+				else {
+					sb.append(", " + e.getValue().get(i));
+				}
+				
+			}
+			
+			
+			
+			System.out.println(depName + ": " + sb);
 			
 		}
 		
-		
+		sc.close();
 		
 		return true;
 		
 	}
 	
 	
+	public static void main(String[] args) {
+		
+		depnameofemployees(new ArrayList<String>());
+		
+	}
 
 }
