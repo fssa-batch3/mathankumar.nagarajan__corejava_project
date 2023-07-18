@@ -76,8 +76,34 @@ class LocalDateComparatorAndPriority implements Comparator<Task> {
 	}
 	
 }
+
 	
 public class SortOrderUsingPriorityAndDeadline {
+	
+	public static boolean sortTask(List<Task> list) throws IllegalArgumentException {
+		
+		if(list == null) {
+			throw new IllegalArgumentException("Task List Can't be Null");
+		}
+		
+		if(list.size() == 0) {
+			throw new IllegalArgumentException("Task List Can't be Empty");
+		}
+	
+		
+		Collections.sort(list, new LocalDateComparatorAndPriority());
+		
+		Iterator<Task> itr = list.iterator();
+		while(itr.hasNext()) {
+			
+			Task tk = itr.next();
+			System.out.println(tk.getId() + "," + tk.getName() + "," + tk.getDeadline());
+			
+		}
+		
+		return true;
+		
+	}
 	
 	public static void main(String[] args) {
 		
@@ -91,23 +117,13 @@ public class SortOrderUsingPriorityAndDeadline {
 		
 		
 		List<Task> list = new ArrayList<Task>();
+		
 		list.add(t1);
 		list.add(t2);
 		list.add(t3);
 		list.add(t4);
 		
-		Collections.sort(list, new LocalDateComparatorAndPriority());
-		
-		Iterator<Task> itr = list.iterator();
-		while(itr.hasNext()) {
-			
-			Task tk = itr.next();
-			System.out.println(tk.getId() + "," + tk.getName() + "," + tk.getDeadline());
-			
-		}
-		
-		
-		
+		sortTask(list);
 		
 		
 	}

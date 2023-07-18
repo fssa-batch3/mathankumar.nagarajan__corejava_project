@@ -5,9 +5,12 @@ import java.util.Collections;
 
 public class SortListOfIntegers {
 	
-	public static void main(String[] args) {
+	public static boolean addIntegerToArray(ArrayList<Integer> intList) throws IllegalArgumentException {
 		
-		ArrayList<Integer> intList = new ArrayList<Integer>();
+		if(intList == null) {
+			throw new IllegalArgumentException("ArrayList Can't be Null");
+		}
+		
 		intList.add(8);
 		intList.add(9);
 		intList.add(45);
@@ -22,7 +25,18 @@ public class SortListOfIntegers {
 			System.out.print(intList.get(i) + " ");
 		}
 		
+		return true;
 		
+		
+	}
+	
+	
+	public static void main(String[] args) {
+		
+		ArrayList<Integer> intList = new ArrayList<Integer>();
+		
+		addIntegerToArray(intList);
+
 	}
 
 }
