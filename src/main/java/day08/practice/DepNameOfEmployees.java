@@ -13,7 +13,7 @@ public class DepNameOfEmployees {
 	
 	public static boolean depnameofemployees(ArrayList<String> depOfEmp) throws IllegalArgumentException {
 		
-		Scanner sc = new Scanner(System.in);
+		
 		
 		if(depOfEmp == null) {
 			throw new IllegalArgumentException("Given ArrayList Cann't be Null");
@@ -21,32 +21,17 @@ public class DepNameOfEmployees {
 		
 		
 		Map<String, List<String>> depMap = new TreeMap<>();
-		
-		System.out.println("Enter Input Like: HR, Name");
+
 		
 		
 		for(int i=0; i<depOfEmp.size(); i++) {
 			String str = depOfEmp.get(i);
-			
-			
-//		while(sc.hasNext()) {
-			
-//			String str = sc.nextLine();
-			
-//			if("stop".equals(str)) {
-//				break;
-//			}
-			
 			
 			if(str == null|| "".equals(str.trim())) {
 				throw new IllegalArgumentException("Input cann't be Empty or Null");
 			}
 			
 			String[] arrDepName = str.split(",");
-			
-//			if(arrDepName == null) {
-//				throw new IllegalArgumentException("User Given String Must have ',' and Conn't be Null");
-//			}
 			
 			if(arrDepName.length < 2 || arrDepName.length > 2) {
 				throw new IllegalArgumentException("Input Must hava Department and the Employee Name");
@@ -62,7 +47,7 @@ public class DepNameOfEmployees {
 			
 		}
 		
-//Collections.sort();
+		//Collections.sort();
 		
 		for(Map.Entry<String, List<String>> e : depMap.entrySet()) {
 			
@@ -88,7 +73,7 @@ public class DepNameOfEmployees {
 			
 		}
 		
-		sc.close();
+		
 		
 		return true;
 		
@@ -97,7 +82,26 @@ public class DepNameOfEmployees {
 	
 	public static void main(String[] args) {
 		
-		depnameofemployees(new ArrayList<String>());
+		Scanner sc = new Scanner(System.in);
+		
+		ArrayList<String> depOfEmp = new ArrayList<String>();
+		
+		System.out.println("Enter Input Like: HR, Name");
+		
+		while(sc.hasNext()) {
+			
+			String str = sc.next();
+			
+			if("stop".equals(str)) {
+				break;
+			}
+			
+			depOfEmp.add(str);
+		}
+		
+		depnameofemployees(depOfEmp);
+		
+		sc.close();
 		
 	}
 
