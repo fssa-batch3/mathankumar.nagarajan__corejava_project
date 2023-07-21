@@ -1,11 +1,6 @@
 package day12.practice;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -30,6 +25,7 @@ class Task {
 }
 
 class TaskDAO2 {
+	
 
 	public static Connection getConnection() {
 
@@ -49,11 +45,17 @@ class TaskDAO2 {
 
 	}
 
-	public static boolean createTask(Task task) throws DAOException {
+	public static boolean createTask(Task task) throws DAOException, IllegalArgumentException {
 		// Write code here to get connection
 		// Create insert statement
 		// Execute insert statement
 		// close connection
+		
+		try {
+			TaskValidator.validate(task);
+		}catch(IllegalArgumentException e) {
+			throw new IllegalArgumentException(e.getMessage());
+		}
 
 		Connection con = null;
 
@@ -77,11 +79,21 @@ class TaskDAO2 {
 
 	}
 
-	public static void updateTask(Task task) throws DAOException {
+	public static boolean updateTask(Task task) throws DAOException {
 		// Write code here to get connection
 		// Create update statement using task id
 		// Execute update statement using task id
 		// close connection
+		
+		try {
+			TaskValidator.validate(task);
+		}catch(IllegalArgumentException e) {
+			throw new IllegalArgumentException(e.getMessage());
+		}
+		
+		if(task.id <= 0) {
+			throw new IllegalArgumentException("Task Id conn't be 0 or less then 0");
+		}
 
 		Connection con = null;
 
@@ -101,15 +113,20 @@ class TaskDAO2 {
 		} finally {
 			ConnectionUtil.close(con, null, null);
 		}
+		
+		return true;
 
 	}
 
-	public static void deleteTask(int taskId) throws DAOException {
+	public static boolean deleteTask(int taskId) throws DAOException {
 		// Write code here to get connection
 		// Create delete statement using task id
 		// Execute delete statement using task id
 		// close connection
 		
+		if(taskId <= 0) {
+			throw new IllegalArgumentException("Task Id conn't be 0 or less then 0");
+		}
 		Connection con = null;
 
 		try {
@@ -126,6 +143,8 @@ class TaskDAO2 {
 		} finally {
 			ConnectionUtil.close(con, null, null);
 		}
+		
+		return true;
 		
 	}
 
