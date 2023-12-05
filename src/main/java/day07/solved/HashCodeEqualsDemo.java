@@ -68,7 +68,7 @@ public class HashCodeEqualsDemo {
         setOfEmps.add(emp2);
  
         for (Employee emp : setOfEmps) {
-            System.out.println(emp);
+            System.out.println(emp.toString());
         }
  
         System.out.println("HashSet size:" + setOfEmps.size());

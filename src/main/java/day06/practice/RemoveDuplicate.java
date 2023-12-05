@@ -17,6 +17,8 @@ public class RemoveDuplicate {
 		// store the unique city name is an another ArrayList
 
 		List<String> outputList = new ArrayList<String>();
+		
+		System.out.println(outputList.get(0));
 
 		for(int i=0;i<cityList.size();i++) {
 			
